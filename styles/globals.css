@@ -1,3 +1,90 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+iframe {
+  font-family: 'Untitled Sans', sans-serif !important;
+}
+
+@font-face {
+  font-family: 'Untitled Sans';
+  font-weight: 400;
+  src: url('fonts/UntitledSansWeb-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Untitled Sans';
+  font-weight: 500;
+  src: url('fonts/UntitledSansWeb-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Untitled Sans';
+  font-weight: 700;
+  src: url('fonts/UntitledSansWeb-Medium.woff2') format('woff2');
+}
+
+*,
+body {
+  font-family: 'Untitled Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Untitled Sans', sans-serif;
+  letter-spacing: max(min(-0.055em, -0.66vw), -0.07em);
+  font-weight: 500;
+}
+
+.twizard-bg {
+  background: radial-gradient(
+      circle at 15% 50%,
+      #fb923c20,
+      rgba(255, 255, 255, 0) 25%
+    ),
+    radial-gradient(circle at 45% 90%, #c084fc20, rgba(255, 255, 255, 0) 25%),
+    radial-gradient(circle at 85% 30%, #22d3ee20, rgba(255, 255, 255, 0) 25%) !important;
+}
+
+.snip-bg {
+  background: radial-gradient(
+      circle at 15% 50%,
+      #fb718530,
+      rgba(255, 255, 255, 0) 25%
+    ),
+    radial-gradient(circle at 45% 90%, #60a5fa30, rgba(255, 255, 255, 0) 25%),
+    radial-gradient(circle at 85% 30%, #38bdf830, rgba(255, 255, 255, 0) 25%) !important;
+}
+
+.burnouts-bg {
+  background: radial-gradient(
+      circle at 15% 50%,
+      #4ade8020,
+      rgba(255, 255, 255, 0) 25%
+    ),
+    radial-gradient(circle at 45% 90%, #0f172a20, rgba(255, 255, 255, 0) 25%),
+    radial-gradient(circle at 85% 30%, #facc1520, rgba(255, 255, 255, 0) 25%) !important;
+}
+
+.fbpixel-bg {
+  background: radial-gradient(
+      circle at 15% 50%,
+      #33415520,
+      rgba(255, 255, 255, 0) 25%
+    ),
+    radial-gradient(circle at 45% 90%, #4ade8020, rgba(255, 255, 255, 0) 25%),
+    radial-gradient(circle at 85% 30%, #fb718520, rgba(255, 255, 255, 0) 25%) !important;
+}
+
+.main-bg {
+  background: radial-gradient(
+      circle at 15% 50%,
+      #ede9fe,
+      rgba(255, 255, 255, 0) 25%
+    ),
+    radial-gradient(circle at 85% 30%, #d8f3f6, rgba(255, 255, 255, 0) 25%);
+  max-height: 100vh;
+}

@@ -1,17 +1,22 @@
 import Head from 'next/head';
+import { ReactNode } from 'react';
 
-export default function Nav() {
+export default function Nav({ pageTitle }: { pageTitle: ReactNode }) {
   return (
     <nav>
       <Head>
-        <title>Next Typescript Tailwind Starter</title>
+        <title>{pageTitle} | Telescope</title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
         />
-        <meta name="description" content="Description" />
+        <meta
+          name="description"
+          content="A SaaS pricing calculator that gives you projections about the future"
+        />
+        <meta name="author" content="Kamfeskaya" />
         <meta name="keywords" content="Keywords" />
 
         {/* Android */}
