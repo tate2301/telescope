@@ -200,6 +200,7 @@ export default function CalculatorBaseUI() {
               name="churn_rate"
               type="number"
               step="0.01"
+              disabled
               className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-indigo-400 focus:ring-indigo-500 dark:focus:border-indigo-400 focus:border-indigo-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="churn_rate"
