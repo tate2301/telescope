@@ -20,7 +20,6 @@ export default function Nav({ pageTitle }: { pageTitle: ReactNode }) {
         <meta name="keywords" content="Keywords" />
 
         {/* Android */}
-        <meta name="theme-color" content="red" />
         <meta name="mobile-web-app-capable" content="yes" />
 
         {/* iOS */}
@@ -29,8 +28,6 @@ export default function Nav({ pageTitle }: { pageTitle: ReactNode }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
         {/* Windows  */}
-        <meta name="msapplication-navbutton-color" content="red" />
-        <meta name="msapplication-TileColor" content="red" />
         <meta name="msapplication-TileImage" content="ms-icon-144x144.png" />
         <meta name="msapplication-config" content="browserconfig.xml" />
 
