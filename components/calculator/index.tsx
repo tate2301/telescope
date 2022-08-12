@@ -16,7 +16,7 @@ const CalculatorWrapper = ({ children }: ReactChildrenProps) => {
 
 const CalculatorConsumer = () => {
   return (
-    <div className="w-full p-4 border rounded-md shadow-sm">
+    <div className="w-full p-4 rounded-md">
       <CalculatorBaseUI />
     </div>
   );
