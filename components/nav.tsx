@@ -14,7 +14,7 @@ export default function Nav({ pageTitle }: { pageTitle: ReactNode }) {
         />
         <meta
           name="description"
-          content="A SaaS pricing calculator that gives you projections about the future"
+          content="Get actionable projections about how much money you will make and how much money you will lose if you use a given SaaS pricing model"
         />
         <meta name="author" content="Kamfeskaya" />
         <meta name="keywords" content="Keywords" />
@@ -91,6 +91,7 @@ export default function Nav({ pageTitle }: { pageTitle: ReactNode }) {
 
         {/*  Manifest.json  */}
         <link href="manifest.json" rel="manifest" />
+        <meta property="og:image" content="/popgraph.png" />
       </Head>
     </nav>
   );

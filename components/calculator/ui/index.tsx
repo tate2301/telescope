@@ -305,7 +305,7 @@ export default function CalculatorBaseUI() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-between w-full gap-4 py-4 md:items-center md:flex-row">
+      <div className="flex flex-col items-start justify-between w-full gap-4 py-4 md:items-center md:flex-row">
         <p>MRR after a year</p>
         <p className="text-right md:w-1/2">
           {Intl.NumberFormat('en-GB', {
@@ -314,7 +314,7 @@ export default function CalculatorBaseUI() {
           }).format(Number(results.mrr_after_one_year ?? 0))}
         </p>
       </div>
-      <div className="flex flex-col justify-between w-full gap-4 py-4 md:items-center md:flex-row">
+      <div className="flex flex-col items-start justify-between w-full gap-4 py-4 md:items-center md:flex-row">
         <p>Revenue Churn</p>
         <p className="text-right text-red-500 dark:text-red-400 md:w-1/2">
           {' '}
@@ -325,7 +325,7 @@ export default function CalculatorBaseUI() {
           }).format(Math.abs(Number(results.revenue_churn ?? 0)))}
         </p>
       </div>
-      <div className="flex flex-col justify-between w-full gap-4 py-4 md:items-center md:flex-row">
+      <div className="flex flex-col items-start justify-between w-full gap-4 py-4 md:items-center md:flex-row">
         <p>Annual Gross Revenue</p>
         <p className="text-right md:w-1/2">
           {Intl.NumberFormat('en-GB', {
@@ -334,7 +334,7 @@ export default function CalculatorBaseUI() {
           }).format(Number(results.annual_gross_revenue ?? 0))}
         </p>
       </div>
-      <div className="flex flex-col justify-between w-full gap-4 py-4 mt-4 border-t md:items-center md:flex-row">
+      <div className="flex flex-col items-start justify-between w-full gap-4 py-4 mt-4 border-t md:items-center md:flex-row">
         <p>Transaction Fees</p>
         <p className="text-right text-red-500 dark:text-red-400 md:w-1/2">
           -
@@ -344,7 +344,7 @@ export default function CalculatorBaseUI() {
           }).format(Math.abs(Number(results.total_tx_cost ?? 0)))}
         </p>
       </div>
-      <div className="flex flex-col justify-between w-full gap-4 py-4 md:items-center md:flex-row">
+      <div className="flex flex-col items-start justify-between w-full gap-4 py-4 md:items-center md:flex-row">
         <p>Tax</p>
         <p className="text-right text-red-500 dark:text-red-400 md:w-1/2">
           -
