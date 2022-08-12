@@ -89,6 +89,39 @@ export default function Nav({ pageTitle }: { pageTitle: ReactNode }) {
         {/*  Manifest.json  */}
         <link href="manifest.json" rel="manifest" />
         <meta property="og:image" content="/popgraph.png" />
+        <meta property="og:url" content="https://telescope.kamfeskaya.com/" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="SaaS Pricing Calculator | Telescope"
+        />
+        <meta
+          property="og:description"
+          content="Get actionable projections about how much money you will make and how much money you will lose if you use a given SaaS pricing model"
+        />
+        <meta
+          property="og:image"
+          content="https://telescope.kamfeskaya.com/popgraph.png"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="telescope.kamfeskaya.com" />
+        <meta
+          property="twitter:url"
+          content="https://telescope.kamfeskaya.com/"
+        />
+        <meta
+          name="twitter:title"
+          content="SaaS Pricing Calculator | Telescope"
+        />
+        <meta
+          name="twitter:description"
+          content="Get actionable projections about how much money you will make and how much money you will lose if you use a given SaaS pricing model"
+        />
+        <meta
+          name="twitter:image"
+          content="https://telescope.kamfeskaya.com/popgraph.png"
+        />
       </Head>
     </nav>
   );
