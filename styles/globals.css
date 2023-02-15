@@ -2,31 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-iframe {
-  font-family: 'Untitled Sans', sans-serif !important;
-}
-
-@font-face {
-  font-family: 'Untitled Sans';
-  font-weight: 400;
-  src: url('fonts/UntitledSansWeb-Regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Untitled Sans';
-  font-weight: 500;
-  src: url('fonts/UntitledSansWeb-Medium.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Untitled Sans';
-  font-weight: 700;
-  src: url('fonts/UntitledSansWeb-Medium.woff2') format('woff2');
-}
-
 *,
 body {
-  font-family: 'Untitled Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
 }
 
 h1,
@@ -34,9 +13,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Untitled Sans', sans-serif;
-  letter-spacing: max(min(-0.055em, -0.66vw), -0.07em);
-  font-weight: 500;
+  font-family: 'Inter', sans-serif;
 }
 
 .twizard-bg {

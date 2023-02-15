@@ -3,6 +3,7 @@ import {
   FormHTMLAttributes,
   useEffect,
   useState,
+  useMemo,
 } from 'react';
 import { evaluateAllvariables } from '../functions';
 import { calculated_values, variables } from '../types';
@@ -82,16 +83,18 @@ export default function CalculatorBaseUI() {
   return (
     // @ts-ignore
     <form onChange={onChange} className="flex flex-col w-full">
-      <h2 className="mb-4 text-2xl font-medium text-gray-900 dark:text-white lg:text-4xl">
-        Pricing Model
+      <h2 className="text-xl antialiased font-semibold tracking-tight text-gray-900 dark:text-white lg:text-4xl">
+        How much will you make?
       </h2>
+      <RenderResults results={results} />
+
       <div className="grid grid-cols-2 gap-8 py-4 mb-4 border-b dark:border-gray-700">
         <div className="block col-span-2 gap-2 md:col-span-1">
           <label
             htmlFor="base_price"
             className="block text-sm font-medium text-gray-700 dark:text-gray-50"
           >
-            Price
+            Subscription price
           </label>
           <div className="mt-1">
             <div className="relative rounded-md shadow-sm ">
@@ -104,7 +107,7 @@ export default function CalculatorBaseUI() {
                 name="base_price"
                 type="number"
                 step="0.01"
-                className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-indigo-400 focus:ring-indigo-500 dark:focus:border-indigo-400 focus:border-indigo-500 pl-7 sm:text-sm"
+                className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
                 placeholder="0.00"
                 aria-describedby="base_price"
               />
@@ -124,7 +127,7 @@ export default function CalculatorBaseUI() {
             htmlFor="customers_per_month"
             className="block text-sm font-medium text-gray-700 dark:text-gray-50"
           >
-            Customers/month
+            New customers per month
           </label>
           <div className="mt-1">
             <div className="relative rounded-md shadow-sm">
@@ -132,7 +135,7 @@ export default function CalculatorBaseUI() {
                 name="customers_per_month"
                 type="number"
                 step="1"
-                className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-indigo-400 focus:ring-indigo-500 dark:focus:border-indigo-400 focus:border-indigo-500 pl-7 sm:text-sm"
+                className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
                 placeholder="0"
                 aria-describedby="customers_per_month"
               />
@@ -166,7 +169,7 @@ export default function CalculatorBaseUI() {
               name="current_mrr"
               type="number"
               step="0.01"
-              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-indigo-400 focus:ring-indigo-500 dark:focus:border-indigo-400 focus:border-indigo-500 pl-7 sm:text-sm"
+              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="current_mrr"
             />
@@ -201,11 +204,12 @@ export default function CalculatorBaseUI() {
               type="number"
               step="0.01"
               disabled
-              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-indigo-400 focus:ring-indigo-500 dark:focus:border-indigo-400 focus:border-indigo-500 pl-7 sm:text-sm"
+              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="churn_rate"
             />
           </div>
+          <p className="mt-2 text-sm text-gray-400">Currently disabled</p>
         </div>
       </div>
       <div className="py-4">
@@ -234,7 +238,7 @@ export default function CalculatorBaseUI() {
               step="0.01"
               onChange={onSingleFieldChange}
               value={state.payment_provider_percentage_fee}
-              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-indigo-400 focus:ring-indigo-500 dark:focus:border-indigo-400 focus:border-indigo-500 pl-7 sm:text-sm"
+              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="payment_provider_percentage_fee"
             />
@@ -262,7 +266,7 @@ export default function CalculatorBaseUI() {
               onChange={onSingleFieldChange}
               value={state.payment_provider_fixed_fee}
               step="0.01"
-              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-indigo-400 focus:ring-indigo-500 dark:focus:border-indigo-400 focus:border-indigo-500 pl-7 sm:text-sm"
+              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="payment_provider_fixed_fee"
             />
@@ -297,74 +301,132 @@ export default function CalculatorBaseUI() {
               type="number"
               step="0.01"
               value={20}
+              disabled
               onChange={onSingleFieldChange}
-              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-indigo-400 focus:ring-indigo-500 dark:focus:border-indigo-400 focus:border-indigo-500 pl-7 sm:text-sm"
+              className="block w-full pr-12 text-gray-400 border-gray-300 rounded-md form-input dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="tax_rate"
             />
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-start justify-between w-full gap-4 py-4 md:items-center md:flex-row">
-        <p>MRR after a year</p>
-        <p className="text-right md:w-1/2">
-          {Intl.NumberFormat('en-GB', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(Number(results.mrr_after_one_year ?? 0))}
-        </p>
+    </form>
+  );
+}
+function RenderResults(props: { results: calculated_values }) {
+  const color = useMemo(() => {
+    if (props.results.annual_net_revenue < 0) return 'red';
+    if (props.results.annual_net_revenue > 0) return 'green';
+    return 'gray';
+  }, [props.results]);
+
+  const isLoss = color === 'red';
+  const isProfit = color === 'green';
+
+  return (
+    <div
+      className={`container flex flex-col w-full max-w-3xl mx-auto my-12 overflow-hidden bg-white border border-gray-100 shadow-xl rounded-xl transition-all duration-300 ${
+        isLoss
+          ? 'border-red-100 shadow-red-100'
+          : isProfit
+          ? 'border-green-100 shadow-green-100'
+          : ''
+      }`}
+    >
+      <div className="flex flex-col w-full gap-6 p-6 ">
+        <div className="flex w-full">
+          <div className="w-auto">
+            <p className="text-gray-500">Annual Gross Revenue</p>
+            <p className="text-gray-900 ">
+              {Intl.NumberFormat('en-GB', {
+                style: 'currency',
+                currency: 'USD',
+              }).format(Number(props.results.annual_gross_revenue ?? 0))}
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col gap-6 md:gap-12 md:flex-row">
+          <div className="w-auto">
+            <p className="text-gray-500">Transaction fees</p>
+            <p className="text-gray-900">
+              {Intl.NumberFormat('en-GB', {
+                style: 'currency',
+                currency: 'USD',
+              }).format(Number(props.results.total_tx_cost ?? 0))}
+            </p>
+          </div>
+          <div className="w-auto">
+            <p className="text-gray-500">Tax</p>
+            <p className="text-gray-900">
+              {Intl.NumberFormat('en-GB', {
+                style: 'currency',
+                currency: 'USD',
+              }).format(Number(props.results.total_tax ?? 0))}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="flex flex-col items-start justify-between w-full gap-4 py-4 md:items-center md:flex-row">
-        <p>Revenue Churn</p>
-        <p className="text-right text-red-500 dark:text-red-400 md:w-1/2">
-          {' '}
-          -
-          {Intl.NumberFormat('en-GB', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(Math.abs(Number(results.revenue_churn ?? 0)))}
-        </p>
-      </div>
-      <div className="flex flex-col items-start justify-between w-full gap-4 py-4 md:items-center md:flex-row">
-        <p>Annual Gross Revenue</p>
-        <p className="text-right md:w-1/2">
-          {Intl.NumberFormat('en-GB', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(Number(results.annual_gross_revenue ?? 0))}
-        </p>
-      </div>
-      <div className="flex flex-col items-start justify-between w-full gap-4 py-4 mt-4 border-t md:items-center md:flex-row">
-        <p>Transaction Fees</p>
-        <p className="text-right text-red-500 dark:text-red-400 md:w-1/2">
-          -
-          {Intl.NumberFormat('en-GB', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(Math.abs(Number(results.total_tx_cost ?? 0)))}
-        </p>
-      </div>
-      <div className="flex flex-col items-start justify-between w-full gap-4 py-4 md:items-center md:flex-row">
-        <p>Tax</p>
-        <p className="text-right text-red-500 dark:text-red-400 md:w-1/2">
-          -
-          {Intl.NumberFormat('en-GB', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(Math.abs(Number(results.total_tax ?? 0)))}
-        </p>
-      </div>
-      <div className="fixed bottom-0 left-0 flex flex-col justify-between w-screen gap-4 p-3 py-4 mt-4 font-medium text-white bg-indigo-600 shadow-sm md:items-center md:flex-row">
-        <div className="container flex items-center justify-between max-w-3xl px-6 mx-auto">
-          <p>Annual Net Revenue</p>
-          <p className="text-right md:w-1/2">
+
+      <div
+        className={`p-6 flex flex-col md:flex-row gap-6 md:gap-12 ${
+          isLoss ? 'bg-red-600' : isProfit ? 'bg-green-600' : 'bg-gray-100'
+        }`}
+      >
+        <div className="w-auto">
+          <p
+            className={
+              isLoss
+                ? 'text-red-200'
+                : isProfit
+                ? 'text-green-200'
+                : 'text-gray-500'
+            }
+          >
+            MRR after 12 months
+          </p>
+          <p
+            className={`text-xl font-bold ${
+              isLoss
+                ? 'text-red-50'
+                : isProfit
+                ? 'text-green-50'
+                : 'text-gray-500'
+            }`}
+          >
             {Intl.NumberFormat('en-GB', {
               style: 'currency',
               currency: 'USD',
-            }).format(Number(results.annual_net_revenue ?? 0))}
+            }).format(Number(props.results.mrr_after_one_year ?? 0))}
+          </p>
+        </div>
+        <div className="w-auto">
+          <p
+            className={
+              isLoss
+                ? 'text-red-200'
+                : isProfit
+                ? 'text-green-200'
+                : 'text-gray-500'
+            }
+          >
+            Annual Net Revenue
+          </p>
+          <p
+            className={`text-xl font-bold ${
+              isLoss
+                ? 'text-red-50'
+                : isProfit
+                ? 'text-green-50'
+                : 'text-gray-500'
+            }`}
+          >
+            {Intl.NumberFormat('en-GB', {
+              style: 'currency',
+              currency: 'USD',
+            }).format(Number(props.results.annual_net_revenue ?? 0))}
           </p>
         </div>
       </div>
-    </form>
+    </div>
   );
 }

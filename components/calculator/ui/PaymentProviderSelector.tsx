@@ -95,7 +95,7 @@ export default function PaymentProviderSelector({
               classNames(
                 checked ? 'border-transparent' : 'border-gray-300',
                 active
-                  ? 'border-indigo-500 dark:border-indigo-500 ring-2 ring-indigo-500 dark:ring-indigo-500'
+                  ? 'border-orange-500 dark:border-orange-500 ring-2 ring-orange-500 dark:ring-orange-500'
                   : '',
                 'relative bg-white dark:bg-slate-900 border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none',
               )
@@ -128,14 +128,14 @@ export default function PaymentProviderSelector({
                 <CheckCircleIcon
                   className={classNames(
                     !checked ? 'invisible' : '',
-                    'h-5 w-5 text-indigo-600',
+                    'h-5 w-5 text-orange-600',
                   )}
                   aria-hidden="true"
                 />
                 <span
                   className={classNames(
                     active ? 'border' : 'border-2',
-                    checked ? 'border-indigo-500' : 'border-transparent',
+                    checked ? 'border-orange-500' : 'border-transparent',
                     'absolute -inset-px rounded-lg pointer-events-none',
                   )}
                   aria-hidden="true"
