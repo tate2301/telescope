@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { ReactNode } from 'react';
 
-export default function Nav({ pageTitle }: { pageTitle: ReactNode }) {
+export default function SEO({ pageTitle }: { pageTitle: ReactNode }) {
   return (
     <nav>
       <Head>
-        <title>{pageTitle} | Telescope</title>
+        <title>{pageTitle} | Zicheni</title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta

@@ -83,14 +83,14 @@ export default function PaymentProviderSelector({
   return (
     <RadioGroup value={selectedProvider} onChange={updateInfo}>
       <RadioGroup.Label className="text-base font-medium text-gray-900">
-        Select a mailing list
+        Select a payment processor
       </RadioGroup.Label>
 
       <div className="grid grid-cols-1 mt-4 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
-        {providers.map((mailingList) => (
+        {providers.map((paymentProvider) => (
           <RadioGroup.Option
-            key={mailingList.id}
-            value={mailingList}
+            key={paymentProvider.id}
+            value={paymentProvider}
             className={({ checked, active }) =>
               classNames(
                 checked ? 'border-transparent' : 'border-gray-300',
@@ -106,22 +106,22 @@ export default function PaymentProviderSelector({
                 <span className="flex flex-1">
                   <span className="flex flex-col">
                     <RadioGroup.Label
-                      as="span"
+                      as="label"
                       className="block text-sm font-medium text-gray-900 dark:text-gray-50"
                     >
-                      {mailingList.title}
+                      {paymentProvider.title}
                     </RadioGroup.Label>
                     <RadioGroup.Description
                       as="span"
                       className="flex items-center mt-1 text-sm text-gray-500 dark:text-gray-300"
                     >
-                      Fixed Fee: {mailingList.params.fixed}USD
+                      Fixed Fee: {paymentProvider.params.fixed}USD
                     </RadioGroup.Description>
                     <RadioGroup.Description
                       as="span"
                       className="flex items-center mt-1 text-sm text-gray-500 dark:text-gray-300"
                     >
-                      Percentage Fee: {mailingList.params.percentage}%
+                      Percentage Fee: {paymentProvider.params.percentage}%
                     </RadioGroup.Description>
                   </span>
                 </span>

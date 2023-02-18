@@ -4,16 +4,28 @@
 
 *,
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
+  @apply font-normal text-zinc-600;
 }
 
 h1,
 h2,
 h3,
 h4,
-h5 {
-  font-family: 'Inter', sans-serif;
+h5,
+label,
+.sf {
+  font-family: 'SF Pro Rounded', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+
+  @apply font-semibold select-text text-zinc-800;
+}
+
+a {
+  @apply font-semibold text-zinc-800 hover:underline;
 }
 
 .twizard-bg {

@@ -83,9 +83,15 @@ export default function CalculatorBaseUI() {
   return (
     // @ts-ignore
     <form onChange={onChange} className="flex flex-col w-full">
-      <h2 className="text-xl antialiased font-semibold tracking-tight text-gray-900 dark:text-white lg:text-4xl">
-        How much will you make?
-      </h2>
+      <div className="flex flex-col gap-2">
+        <h2 className="text-xl antialiased tracking-tight text-gray-900 font-semisemibold dark:text-white lg:text-4xl">
+          Quick estimation
+        </h2>
+        <p>
+          This tool allows you to do quick estimations for a single subscription
+          based pricing model, ignoring churn and at a fixed tax rate of 20%
+        </p>
+      </div>
       <RenderResults results={results} />
 
       <div className="grid grid-cols-2 gap-8 py-4 mb-4 border-b dark:border-gray-700">
@@ -313,6 +319,7 @@ export default function CalculatorBaseUI() {
     </form>
   );
 }
+
 function RenderResults(props: { results: calculated_values }) {
   const color = useMemo(() => {
     if (props.results.annual_net_revenue < 0) return 'red';
@@ -336,7 +343,7 @@ function RenderResults(props: { results: calculated_values }) {
       <div className="flex flex-col w-full gap-6 p-6 ">
         <div className="flex w-full">
           <div className="w-auto">
-            <p className="text-gray-500">Annual Gross Revenue</p>
+            <h3 className="text-gray-500">Annual Gross Revenue</h3>
             <p className="text-gray-900 ">
               {Intl.NumberFormat('en-GB', {
                 style: 'currency',
@@ -347,7 +354,7 @@ function RenderResults(props: { results: calculated_values }) {
         </div>
         <div className="flex flex-col gap-6 md:gap-12 md:flex-row">
           <div className="w-auto">
-            <p className="text-gray-500">Transaction fees</p>
+            <h3 className="text-gray-500">Transaction fees</h3>
             <p className="text-gray-900">
               {Intl.NumberFormat('en-GB', {
                 style: 'currency',
@@ -356,7 +363,7 @@ function RenderResults(props: { results: calculated_values }) {
             </p>
           </div>
           <div className="w-auto">
-            <p className="text-gray-500">Tax</p>
+            <h3 className="text-gray-500">Tax</h3>
             <p className="text-gray-900">
               {Intl.NumberFormat('en-GB', {
                 style: 'currency',
@@ -373,19 +380,19 @@ function RenderResults(props: { results: calculated_values }) {
         }`}
       >
         <div className="w-auto">
-          <p
+          <h3
             className={
               isLoss
-                ? 'text-red-200'
+                ? 'text-red-100'
                 : isProfit
-                ? 'text-green-200'
+                ? 'text-green-100'
                 : 'text-gray-500'
             }
           >
             MRR after 12 months
-          </p>
+          </h3>
           <p
-            className={`text-xl font-bold ${
+            className={`text-xl font-semibold ${
               isLoss
                 ? 'text-red-50'
                 : isProfit
@@ -400,19 +407,19 @@ function RenderResults(props: { results: calculated_values }) {
           </p>
         </div>
         <div className="w-auto">
-          <p
+          <h3
             className={
               isLoss
-                ? 'text-red-200'
+                ? 'text-red-100'
                 : isProfit
-                ? 'text-green-200'
+                ? 'text-green-100'
                 : 'text-gray-500'
             }
           >
             Annual Net Revenue
-          </p>
+          </h3>
           <p
-            className={`text-xl font-bold ${
+            className={`text-xl font-semibold ${
               isLoss
                 ? 'text-red-50'
                 : isProfit
