@@ -15,8 +15,8 @@ export default function ShortURLCard({
       <div className="flex flex-col gap-1">
         <p className="text-lg sf">{title}</p>
         <div>
-          <p>{url}</p>
-          <p>{short_url}</p>
+          <p className="text-sm">{url}</p>
+          <p className="text-sm">{short_url}</p>
         </div>
       </div>
     </div>

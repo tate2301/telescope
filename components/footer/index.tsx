@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const Footer = () => (
-  <footer className="px-2 ">
+  <footer className="px-2 mt-16">
     <div className="container flex justify-between max-w-screen-md py-4 mx-auto border-t">
       <ul className="flex gap-4">
         <li>
