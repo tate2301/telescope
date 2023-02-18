@@ -1,14 +1,11 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
-import Footer from 'components/footer';
 import { AppProps /* , AppContext */ } from 'next/app';
 
 import 'styles/globals.css';
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <div className="min-h-screen bg-white dark:text-gray-50 dark:bg-slate-900">
+    <div className="relative min-h-screen bg-white dark:text-gray-50 dark:bg-slate-900">
       <Component {...pageProps} />
-      <Footer />
     </div>
   );
 }

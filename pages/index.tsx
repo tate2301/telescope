@@ -1,12 +1,15 @@
+import Footer from 'components/footer';
 import { PublicNavbar } from 'components/navbar';
 import SEO from 'components/seo';
+import GradientPageBackground from 'components/utils/GradientPageBackground';
 import Link from 'next/link';
 
 export default function Main() {
   return (
     <>
+      <GradientPageBackground className="main-bg" />
       <PublicNavbar />
-      <div className="container flex flex-col max-w-screen-md px-4 py-0 mx-auto antialiased font-normal md:px-8">
+      <div className="container relative flex flex-col max-w-screen-md px-4 py-0 mx-auto antialiased font-normal md:px-8">
         <SEO pageTitle={'Startup building in a box'} />
         <main className="flex flex-col w-full gap-16 py-8 md:py-12">
           <div className="flex flex-col w-full gap-2">
@@ -65,6 +68,7 @@ export default function Main() {
           </div>
         </main>
       </div>
+      <Footer />
     </>
   );
 }

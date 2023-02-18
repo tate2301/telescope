@@ -7,7 +7,7 @@ export function PublicNavbar() {
   const toggleMenuVisibility = () => setIsMenuShowing(!isMenuShowing);
   return (
     <>
-      <nav className="container justify-between hidden w-full max-w-screen-md py-4 mx-auto md:flex md:flex-row md:px-8">
+      <nav className="container relative justify-between hidden w-full max-w-screen-md py-4 mx-auto md:flex md:flex-row md:px-8">
         <ul className="flex items-baseline gap-8">
           <li>
             <Link href={'/'}>
@@ -41,10 +41,10 @@ export function PublicNavbar() {
         </ul>
       </nav>
 
-      <nav className="z-20 w-screen py-4 md:hidden">
+      <nav className="z-20 w-screen py-4 md:hidden group ">
         <div className="flex items-center justify-between px-4">
           <Link href={'/'}>
-            <a>Zicheni</a>
+            <a className="sf">Zicheni</a>
           </Link>
           <button
             className="p-2 rounded shadow bg-zinc-100"
