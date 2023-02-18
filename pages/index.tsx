@@ -13,7 +13,7 @@ export default function Main() {
         <SEO pageTitle={'Startup building in a box'} />
         <main className="flex flex-col w-full gap-16 py-8 md:py-12">
           <div className="flex flex-col w-full gap-2">
-            <h1 className="text-xl font-semibold">
+            <h1 className="text-3xl font-semibold">
               The most complete toolkit for building startups
             </h1>
             <p>

@@ -41,7 +41,7 @@ export function PublicNavbar() {
         </ul>
       </nav>
 
-      <nav className="z-20 w-screen py-4 md:hidden group ">
+      <nav className="relative z-20 w-screen py-4 md:hidden group">
         <div className="flex items-center justify-between px-4">
           <Link href={'/'}>
             <a className="sf">Zicheni</a>
