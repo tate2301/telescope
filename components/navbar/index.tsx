@@ -32,7 +32,7 @@ export function PublicNavbar() {
             </Link>
           </li>
           <li>
-            <Link href={'/telescope'}>
+            <Link href={'/preview/telescope'}>
               <a className="px-3 py-2 text-white rounded shadow bg-zinc-900">
                 Estimate my revenue
               </a>
@@ -79,7 +79,7 @@ export function PublicNavbar() {
                     Login
                   </a>
                 </Link>
-                <Link href={'/telescope'}>
+                <Link href={'/preview/telescope'}>
                   <a className="px-3 py-2 text-white rounded shadow bg-zinc-900">
                     Estimate my revenue
                   </a>

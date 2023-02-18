@@ -46,11 +46,10 @@ export default function Main() {
           <div className="flex flex-col w-full gap-2">
             <h2 className="text-xl font-semibold">Built for everyone</h2>
             <p>
-              The tools you will find here were built for my personal use before
-              I decided to share them. More tools and features will be added but
-              this project is not the highest of my priorities currently, so
-              everything is given as is, and you&#39;re free to use them as you
-              may see fit.
+              The tools you will find here are built in the order of my personal
+              interests. More tools and features will be added but this project
+              is not the highest of my priorities currently, so everything is
+              given as is, and you&#39;re free to use them as you may see fit.
             </p>
             <p>
               The project is open source, if you would like to contribute, you
