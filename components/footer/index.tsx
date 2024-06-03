@@ -2,26 +2,26 @@ import Link from 'next/link';
 
 const Footer = () => (
   <footer className="px-2 mt-16">
-    <div className="container flex justify-between max-w-screen-md py-4 mx-auto border-t">
-      <ul className="flex gap-4">
-        <li>
-          <Link href={'https://github.com/tate2301/zichenidotio'}>
-            <a className="font-semibold">GitHub</a>
-          </Link>
-        </li>
-        <li>
-          <Link href={'https://twitter.com/zichenidotio'}>
-            <a className="font-semibold">Twitter</a>
-          </Link>
-        </li>
-      </ul>
-      <p>
+    <div className="container flex max-w-screen-md gap-8 py-4 mx-auto">
+      <p
+        style={{
+          boxShadow: '0 2px 12px -8px rgba(0,0,0,0.16)',
+        }}
+        className="px-4 py-2 mx-auto text-sm border rounded-full shadow text-zinc-600 border-zinc-400/20 bg-white/30"
+      >
         Crafted by{' '}
-        <Link href={'https://kamfeskaya.com'}>
+        <Link href={'https://atipamara.xyz'}>
           <a className="font-semibold" target={'_blank'} rel={'noopener'}>
-            Tatenda
+            Atipamara
           </a>
-        </Link>
+        </Link>{' '}
+        the{' '}
+        <Link href={'https://hrurdza.tech'}>
+          <a className="font-semibold" target={'_blank'} rel={'noopener'}>
+            Hurudza
+          </a>
+        </Link>{' '}
+        team
       </p>
     </div>
   </footer>

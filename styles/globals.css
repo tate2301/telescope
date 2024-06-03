@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Geist, sans-serif;
   font-weight: 400;
+  background-color: #eeeeee;
+  font-size: 14 px;
   @apply font-normal text-zinc-600;
 }
 
@@ -18,10 +18,6 @@ h5,
 label,
 .sf,
 button {
-  font-family: 'SF Pro Rounded', system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-    sans-serif;
-
   @apply font-semibold select-text text-zinc-800;
 }
 
