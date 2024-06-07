@@ -23,6 +23,7 @@ export default class MyDocument extends Document {
           style={{
             backgroundImage: 'url("/grid.svg")',
           }}
+          className="pt-24"
         >
           <Main />
           <NextScript />
