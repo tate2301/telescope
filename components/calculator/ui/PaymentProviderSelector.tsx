@@ -91,7 +91,7 @@ export default function PaymentProviderSelector({
           <RadioGroup.Option
             key={paymentProvider.id}
             value={paymentProvider}
-            className={({ checked, active }) =>
+            className={({ active }) =>
               classNames(
                 active
                   ? 'dark:border-orange-500 outline outline-orange-500 dark:outline-orange-500 bg-white'
