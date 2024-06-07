@@ -1,12 +1,10 @@
 import Footer from 'components/footer';
-import { PublicNavbar } from 'components/navbar';
 import SEO from 'components/seo';
 import Link from 'next/link';
 
 export default function Main() {
   return (
     <>
-      <PublicNavbar />
       <SEO pageTitle={'Startup building in a box'} />
       <main className="container relative flex flex-col max-w-screen-md px-4 py-0 mx-auto mb-24 antialiased font-normal md:px-8">
         <div className="flex flex-col w-full gap-2">

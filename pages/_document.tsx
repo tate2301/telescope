@@ -19,7 +19,11 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body>
+        <body
+          style={{
+            backgroundImage: 'url("/grid.svg")',
+          }}
+        >
           <Main />
           <NextScript />
         </body>
