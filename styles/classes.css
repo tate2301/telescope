@@ -1,0 +1,3 @@
+.inventory-grid > :first-child {
+  @apply border-t border-l;
+}

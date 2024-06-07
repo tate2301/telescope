@@ -82,8 +82,8 @@ export default function PaymentProviderSelector({
 
   return (
     <RadioGroup value={selectedProvider} onChange={updateInfo}>
-      <RadioGroup.Label className="text-base font-medium text-gray-900">
-        Select a payment processor
+      <RadioGroup.Label className="text-base font-semibold text-gray-900">
+        Payments processor
       </RadioGroup.Label>
 
       <div className="grid grid-cols-1 mt-4 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
@@ -93,11 +93,10 @@ export default function PaymentProviderSelector({
             value={paymentProvider}
             className={({ checked, active }) =>
               classNames(
-                checked ? 'border-transparent' : 'border-gray-300',
                 active
-                  ? 'border-orange-500 dark:border-orange-500 ring-2 ring-orange-500 dark:ring-orange-500'
+                  ? 'dark:border-orange-500 outline outline-orange-500 dark:outline-orange-500 bg-white'
                   : '',
-                'relative bg-white dark:bg-slate-900 border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none',
+                'relative bg-white/50 dark:bg-slate-900 rounded-lg p-4 flex cursor-pointer transition-all ring-0',
               )
             }
           >

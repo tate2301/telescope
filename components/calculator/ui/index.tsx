@@ -8,6 +8,7 @@ import {
 import { evaluateAllvariables } from '../functions';
 import { calculated_values, variables } from '../types';
 import PaymentProviderSelector from './PaymentProviderSelector';
+import Link from 'next/link';
 
 export default function CalculatorBaseUI() {
   const [state, setState] = useState<variables>({
@@ -83,27 +84,31 @@ export default function CalculatorBaseUI() {
   return (
     // @ts-ignore
     <form onChange={onChange} className="flex flex-col w-full">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-xl antialiased tracking-tight text-gray-900 font-semisemibold dark:text-white lg:text-4xl">
-          Quick estimation
+      <div className="flex flex-col gap-1">
+        <Link href={'/'}>
+          <a className="text-sm font-medium">Back to home</a>
+        </Link>
+        <h2 className="text-xl antialiased tracking-tight text-gray-900 font-semisemibold dark:text-white">
+          Revenue projection
         </h2>
-        <p>
-          This tool allows you to do quick estimations for a single subscription
-          based pricing model, ignoring churn and at a fixed tax rate of 20%
-        </p>
       </div>
       <RenderResults results={results} />
-
-      <div className="grid grid-cols-2 gap-8 py-4 mb-4 border-b dark:border-gray-700">
-        <div className="block col-span-2 gap-2 md:col-span-1">
+      <div className="my-16">
+        <PaymentProviderSelector
+          updatePaymentProviderInfo={updatePaymentProviderInfo}
+        />
+      </div>
+      <h1 className="mb-4 font-semibold">Pricing details</h1>
+      <div className="grid grid-cols-2 mb-6 border-b dark:border-gray-700">
+        <div className="block col-span-2 gap-2 pr-8 md:col-span-1">
           <label
             htmlFor="base_price"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+            className="block text-sm font-normal text-gray-600 dark:text-gray-50"
           >
             Subscription price
           </label>
           <div className="mt-1">
-            <div className="relative rounded-md shadow-sm ">
+            <div className="relative rounded-md">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <span className="text-gray-500 dark:text-gray-400 sm:text-sm">
                   $
@@ -113,7 +118,7 @@ export default function CalculatorBaseUI() {
                 name="base_price"
                 type="number"
                 step="0.01"
-                className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
+                className="block w-full pr-12 border-transparent rounded-md shadow-none focus:bg-[#fefefe] bg-zinc-900/5 dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
                 placeholder="0.00"
                 aria-describedby="base_price"
               />
@@ -131,17 +136,17 @@ export default function CalculatorBaseUI() {
         <div className="col-span-2 gap-2 md:col-span-1">
           <label
             htmlFor="customers_per_month"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+            className="block text-sm font-normal text-gray-600 dark:text-gray-50"
           >
             New customers per month
           </label>
           <div className="mt-1">
-            <div className="relative rounded-md shadow-sm">
+            <div className="relative rounded-md">
               <input
                 name="customers_per_month"
                 type="number"
                 step="1"
-                className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
+                className="block w-full pr-12 border-transparent rounded-md shadow-none focus:bg-[#fefefe] bg-zinc-900/5 dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
                 placeholder="0"
                 aria-describedby="customers_per_month"
               />
@@ -157,15 +162,15 @@ export default function CalculatorBaseUI() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-between w-full gap-4 py-4 md:items-center md:flex-row">
+      <div className="flex flex-col justify-between w-full gap-4 mb-6 md:items-center md:flex-row">
         <label
           htmlFor="current_mrr"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+          className="block text-sm font-normal text-gray-600 dark:text-gray-50"
         >
           Current MRR
         </label>
         <div className="md:w-1/2">
-          <div className="relative rounded-md shadow-sm">
+          <div className="relative rounded-md">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <span className="text-gray-500 dark:text-gray-400 sm:text-sm">
                 $
@@ -175,7 +180,7 @@ export default function CalculatorBaseUI() {
               name="current_mrr"
               type="number"
               step="0.01"
-              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
+              className="block w-full pr-12 border-transparent rounded-md shadow-none focus:bg-[#fefefe] bg-zinc-900/5 dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="current_mrr"
             />
@@ -190,15 +195,15 @@ export default function CalculatorBaseUI() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-between w-full gap-4 py-4 md:items-center md:flex-row">
+      <div className="flex flex-col justify-between w-full gap-4 mb-6 md:items-center md:flex-row">
         <label
           htmlFor="churn_rate"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+          className="block text-sm font-normal text-gray-600 dark:text-gray-50"
         >
           Churn Rate
         </label>
         <div className="md:w-1/2">
-          <div className="relative rounded-md shadow-sm">
+          <div className="relative rounded-md">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <span className="text-gray-500 dark:text-gray-400 sm:text-sm">
                 %
@@ -210,28 +215,26 @@ export default function CalculatorBaseUI() {
               type="number"
               step="0.01"
               disabled
-              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
+              className="block w-full pr-12 border-transparent rounded-md shadow-none focus:bg-[#fefefe] bg-zinc-900/5 dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="churn_rate"
             />
           </div>
-          <p className="mt-2 text-sm text-gray-400">Currently disabled</p>
+          <p className="mt-2 text-sm font-semibold text-gray-500">
+            Currently disabled
+          </p>
         </div>
       </div>
-      <div className="py-4">
-        <PaymentProviderSelector
-          updatePaymentProviderInfo={updatePaymentProviderInfo}
-        />
-      </div>
-      <div className="flex flex-col justify-between w-full gap-4 py-4 md:items-center md:flex-row">
+
+      <div className="flex flex-col justify-between w-full gap-4 mb-6 md:items-center md:flex-row">
         <label
           htmlFor="payment_provider_percentage_fee"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+          className="block text-sm font-normal text-gray-600 dark:text-gray-50"
         >
           Percentage Fee
         </label>
         <div className="md:w-1/2">
-          <div className="relative rounded-md shadow-sm">
+          <div className="relative rounded-md">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <span className="text-gray-500 dark:text-gray-400 sm:text-sm">
                 %
@@ -244,22 +247,22 @@ export default function CalculatorBaseUI() {
               step="0.01"
               onChange={onSingleFieldChange}
               value={state.payment_provider_percentage_fee}
-              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
+              className="block w-full pr-12 border-transparent rounded-md shadow-none focus:bg-[#fefefe] bg-zinc-900/5 dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="payment_provider_percentage_fee"
             />
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-between w-full gap-4 py-4 md:items-center md:flex-row">
+      <div className="flex flex-col justify-between w-full gap-4 mb-6 md:items-center md:flex-row">
         <label
           htmlFor="payment_provider_fixed_fee"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+          className="block text-sm font-normal text-gray-600 dark:text-gray-50"
         >
           Fixed Fee
         </label>
         <div className="md:w-1/2">
-          <div className="relative rounded-md shadow-sm">
+          <div className="relative rounded-md">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <span className="text-gray-500 dark:text-gray-400 sm:text-sm">
                 $
@@ -272,7 +275,7 @@ export default function CalculatorBaseUI() {
               onChange={onSingleFieldChange}
               value={state.payment_provider_fixed_fee}
               step="0.01"
-              className="block w-full pr-12 border-gray-300 rounded-md dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
+              className="block w-full pr-12 border-transparent rounded-md shadow-none focus:bg-[#fefefe] bg-zinc-900/5 dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="payment_provider_fixed_fee"
             />
@@ -287,15 +290,15 @@ export default function CalculatorBaseUI() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-between w-full gap-4 py-4 md:items-center md:flex-row">
+      <div className="flex flex-col justify-between w-full gap-4 mb-6 md:items-center md:flex-row">
         <label
           htmlFor="tax_rate"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+          className="block text-sm font-normal text-gray-600 dark:text-gray-50"
         >
           Tax Rate
         </label>
         <div className="md:w-1/2">
-          <div className="relative rounded-md shadow-sm">
+          <div className="relative rounded-md">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <span className="text-gray-500 dark:text-gray-400 sm:text-sm">
                 %
@@ -309,7 +312,7 @@ export default function CalculatorBaseUI() {
               value={20}
               disabled
               onChange={onSingleFieldChange}
-              className="block w-full pr-12 text-gray-400 border-gray-300 rounded-md form-input dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
+              className="block w-full pr-12 text-gray-400 border-transparent rounded-md shadow-none focus:bg-[#fefefe] bg-zinc-900/5 form-input dark:bg-slate-900 dark:border-gray-600 dark:focus:ring-orange-400 focus:ring-orange-500 dark:focus:border-orange-400 focus:border-orange-500 pl-7 sm:text-sm"
               placeholder="0.00"
               aria-describedby="tax_rate"
             />
@@ -332,19 +335,16 @@ function RenderResults(props: { results: calculated_values }) {
 
   return (
     <div
-      className={`container flex flex-col w-full max-w-3xl mx-auto my-12 overflow-hidden bg-white border border-gray-100 shadow-xl rounded-xl transition-all duration-300 ${
-        isLoss
-          ? 'border-red-100 shadow-red-100'
-          : isProfit
-          ? 'border-green-100 shadow-green-100'
-          : ''
+      style={{ boxShadow: '0 3px 6px -3px rgba(0,0,0,0.16)' }}
+      className={`container flex flex-col w-full max-w-3xl mx-auto my-12 overflow-hidden bg-white/50 rounded-xl transition-all duration-300 border border-white/10 ${
+        isLoss ? 'border-red-100' : isProfit ? 'border-green-100' : ''
       }`}
     >
       <div className="flex flex-col w-full gap-6 p-6 ">
         <div className="flex w-full">
           <div className="w-auto">
-            <h3 className="text-gray-500">Annual Gross Revenue</h3>
-            <p className="text-gray-900 ">
+            <h3 className="text-sm text-gray-500">Annual Gross Revenue</h3>
+            <p className="font-semibold text-gray-900">
               {Intl.NumberFormat('en-GB', {
                 style: 'currency',
                 currency: 'USD',
@@ -354,8 +354,8 @@ function RenderResults(props: { results: calculated_values }) {
         </div>
         <div className="flex flex-col gap-6 md:gap-12 md:flex-row">
           <div className="w-auto">
-            <h3 className="text-gray-500">Transaction fees</h3>
-            <p className="text-gray-900">
+            <h3 className="text-sm text-gray-500">Transaction fees</h3>
+            <p className="font-semibold text-gray-900">
               {Intl.NumberFormat('en-GB', {
                 style: 'currency',
                 currency: 'USD',
@@ -363,8 +363,8 @@ function RenderResults(props: { results: calculated_values }) {
             </p>
           </div>
           <div className="w-auto">
-            <h3 className="text-gray-500">Tax</h3>
-            <p className="text-gray-900">
+            <h3 className="text-sm text-gray-500">Tax</h3>
+            <p className="font-semibold text-gray-900">
               {Intl.NumberFormat('en-GB', {
                 style: 'currency',
                 currency: 'USD',
@@ -376,7 +376,7 @@ function RenderResults(props: { results: calculated_values }) {
 
       <div
         className={`p-6 flex flex-col md:flex-row gap-6 md:gap-12 ${
-          isLoss ? 'bg-red-600' : isProfit ? 'bg-green-600' : 'bg-gray-100'
+          isLoss ? 'bg-red-600' : isProfit ? 'bg-green-600' : 'bg-zinc-500/5'
         }`}
       >
         <div className="w-auto">

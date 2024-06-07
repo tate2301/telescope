@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('./classes.css');
+
 body {
   font-family: Geist, sans-serif;
   font-weight: 400;
   background-color: #eeeeee;
   font-size: 14 px;
-  @apply font-normal text-zinc-600;
+  @apply font-normal text-zinc-700;
 }
 
 h1,
@@ -22,7 +24,7 @@ button {
 }
 
 a {
-  @apply font-semibold text-zinc-800 hover:underline;
+  @apply font-semibold;
 }
 
 .btn {
